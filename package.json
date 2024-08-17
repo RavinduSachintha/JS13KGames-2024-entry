@@ -1,0 +1,21 @@
+{
+  "name": "js13kgames-2024entry",
+  "packageManager": "yarn@4.4.0",
+  "scripts": {
+    "build": "yarn run clean && yarn run copy-files && node build.mjs",
+    "watch:js": "esbuild src/app.ts --bundle --outfile=public/bundle.js --sourcemap --watch",
+    "watch:assets": "chokidar src/index.html src/styles.css -c \"yarn copy-files\"",
+    "clean": "rm -rf public/*",
+    "copy-files": "cp src/index.html public/index.html && cp src/styles.css public/styles.css",
+    "serve": "browser-sync start --config bs-config.js",
+    "dev": "concurrently \"yarn watch:js\" \"yarn watch:assets\" \"yarn serve\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "browser-sync": "^3.0.2",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.2.2",
+    "esbuild": "0.23.0",
+    "typescript": "^5.5.4"
+  }
+}
