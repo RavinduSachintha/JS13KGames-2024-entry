@@ -1,27 +1,34 @@
 import { Constants } from "../core/contants";
 import { BaseElement } from "./base-element.model";
 
+/**
+ * Class for circle SVG element
+ */
 export class Circle extends BaseElement<SVGCircleElement> {
   constructor(
-    public radius: number,
+    // circle radius
+    public r: number,
+    // circle x coordination
     public x: number,
+    // circle y coordination
     public y: number,
-    public color: string
+    // circle color
+    public c: string
   ) {
     super();
   }
 
   override create(): void {
-    this._instance = document.createElementNS(
-      Constants.nameSpaceURI,
-      Constants.svgElementTypeCircle
+    this._i = document.createElementNS(
+      Constants.svgNS,
+      Constants.svgTC
     ) as SVGCircleElement;
-    this._instance.cx.baseVal.value = this.x;
-    this._instance.cy.baseVal.value = this.y;
-    this._instance.r.baseVal.value = this.radius;
-    this._instance.style.fill = this.color;
+    this._i.cx.baseVal.value = this.x;
+    this._i.cy.baseVal.value = this.y;
+    this._i.r.baseVal.value = this.r;
+    this._i.style.fill = this.c;
 
-    this.handleOnClickEvent(() => {
+    this.hdlClickEv(() => {
       console.log(`Circle at (${this.x}, ${this.y}) clicked!`);
     });
   }

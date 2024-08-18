@@ -1,12 +1,13 @@
 import { Circle } from "./models/circle.model";
 
 class App {
-  private svgCanvas!: HTMLElement;
+  // SVG canvas element
+  private sc!: HTMLElement;
 
   private init(): void {
-    this.svgCanvas = document.getElementById("svgCanvas") as HTMLElement;
-    this.svgCanvas.setAttribute("width", "600");
-    this.svgCanvas.setAttribute("height", "600");
+    this.sc = document.getElementById("svgCanvas") as HTMLElement;
+    this.sc.setAttribute("width", "600");
+    this.sc.setAttribute("height", "600");
 
     let x = new Circle(20, 50, 50, "#F00");
     let y = new Circle(20, 100, 100, "#0F0");
@@ -16,9 +17,9 @@ class App {
     y.create();
     z.create();
 
-    this.svgCanvas.appendChild(x.instance);
-    this.svgCanvas.appendChild(y.instance);
-    this.svgCanvas.appendChild(z.instance);
+    this.sc.appendChild(x.instance);
+    this.sc.appendChild(y.instance);
+    this.sc.appendChild(z.instance);
   }
 
   public run(): void {
